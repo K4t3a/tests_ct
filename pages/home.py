@@ -1,6 +1,9 @@
 from .page import Page
 from selenium.webdriver.common.by import By
 import time
+import logging
+
+logger = logging.getLogger(__name__)
 
 class HomePage(Page):
     catalog_new = {
@@ -15,81 +18,44 @@ class HomePage(Page):
 
     def click_catalog_new(self, product_type):
         time.sleep(1)
+        logger.info("Clicking catalog link for product type: %s", product_type)
         self.click(By.XPATH, f"//a[@href='{self.catalog_new[product_type]}']")
 
     def navigate_to(self, url):
+        logger.info("Navigating to URL: %s", url)
         self.driver.get(url)
 
     def click_logo(self):
+        logger.info("Clicking logo")
         self.click(By.ID, "logo")
 
     def scroll_down(self, pixels):
+        logger.info("Scrolling down by %s pixels", pixels)
         self.scroll_to(0, pixels)
 
     def scroll_up(self, pixels):
+        logger.info("Scrolling up to %s pixels", pixels)
         self.scroll_to(pixels, 0)
 
-    def add_to_wishlist(self, product_title):
-        products = self.driver.find_elements(By.XPATH, "//div[@class='product-thumb']")      
-        for product in products:
-            image = product.find_element(By.XPATH, ".//img")
-            if image.get_attribute("title") == product_title:
-                add_to_cart_wishlist = product.find_element(By.XPATH, ".//button[@data-original-title='В закладки']")
-                add_to_cart_wishlist.click()
-
     def add_to_wishlist_new(self, product_title):
-        products = self.driver.find_elements(By.XPATH, "//div[@class='product-thumb']")      
+        products = self.driver.find_elements(By.XPATH, "//div[@class='product-thumb']")
         for product in products:
             image = product.find_element(By.XPATH, ".//img")
             if image.get_attribute("title") == product_title:
-                add_to_cart_wishlist = product.find_element(By.XPATH, ".//button[@data-bs-toggle='tooltip' and @title='Add to Wish List']")
-                add_to_cart_wishlist.click()
-
-    def add_to_compare(self, product_type):
-        products = self.driver.find_elements(By.XPATH, "//div[@class='product-thumb']")      
-        for product in products:
-            image = product.find_element(By.XPATH, ".//img")
-            if image.get_attribute("title") == product_type:
-                add_to_cart_compare = product.find_element(By.XPATH, ".//button[@data-bs-toggle='tooltip' and @title='Compare this Product']")
-                add_to_cart_compare.click()
-
-    def add_to_compare_new(self, product_title):
-        products = self.driver.find_elements(By.XPATH, "//div[@class='product-thumb']")      
-        for product in products:
-            image = product.find_element(By.XPATH, ".//img")
-            if image.get_attribute("title") == product_title:
-                add_to_cart_compare = product.find_element(By.XPATH, ".//button[@data-original-title='tooltip' and @title='В сравнение']")
-                add_to_cart_compare.click()
-
-    def add_to_cart(self, product_title):
-        products = self.driver.find_elements(By.XPATH, "//div[@class='product-thumb']")      
-        for product in products:
-            image = product.find_element(By.XPATH, ".//img")
-            if image.get_attribute("title") == product_title:
-                add_to_cart_button = product.find_element(By.XPATH, ".//button[@data-bs-toggle='tooltip' and @title='Add to Cart']")
-                add_to_cart_button.click()
+                add_to_wishlist = product.find_element(By.XPATH, ".//button[@data-original-title='Добавить в закладки']")
+                logger.info("Adding product to wishlist: %s", product_title)
+                add_to_wishlist.click()
+                return
+        logger.error("Product not found for wishlist: %s", product_title)
+        raise Exception(f"Продукт {product_title} не найден для вишлиста")
 
     def add_to_cart_new(self, product_title):
-        products = self.driver.find_elements(By.XPATH, "//div[@class='product-thumb']")      
+        products = self.driver.find_elements(By.XPATH, "//div[@class='product-thumb']")
         for product in products:
             image = product.find_element(By.XPATH, ".//img")
             if image.get_attribute("title") == product_title:
                 add_to_cart_button = product.find_element(By.XPATH, ".//button[@onclick]")
+                logger.info("Adding product to cart: %s", product_title)
                 add_to_cart_button.click()
-
-    def search(self, search_term):
-        self.send_keys(By.CSS_SELECTOR, ".form-control.form-control-lg", search_term)
-        self.click(By.CSS_SELECTOR, ".btn.btn-light.btn-lg") 
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR, ".form-control.form-control-lg").clear()
-
-    def search_new(self, search_term):
-        self.send_keys(By.CSS_SELECTOR, ".form-control.input-lg", search_term)
-        self.click(By.CSS_SELECTOR, ".input-group-btn") 
-        time.sleep(1)
-        self.driver.find_element(By.CSS_SELECTOR, ".form-control.input-lg").clear()
-
-    def change_currency(self, currency):
-        self.click(By.CSS_SELECTOR, ".fa-solid.fa-caret-down")
-        self.click(By.XPATH, f"//a[@href='{currency}']")
-        time.sleep(1)
+                return
+        logger.error("Product not found for cart: %s", product_title)
