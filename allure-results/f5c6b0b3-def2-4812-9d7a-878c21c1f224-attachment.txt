@@ -1,0 +1,15 @@
+[32mINFO    [0m conftest:conftest.py:45 Configured driver options for browser: chrome, headless: False
+[32mINFO    [0m conftest:conftest.py:62 Initialized WebDriver for browser: chrome
+[32mINFO    [0m conftest:conftest.py:71 Initializing page objects
+[32mINFO    [0m pages.home:home.py:25 Navigating to URL: https://demo-opencart.ru/index.php
+[32mINFO    [0m kt4:kt4.py:229 Тест 9: Добавить HTC Touch HD в корзину
+[32mINFO    [0m kt4:kt4.py:233 Переход в категорию Смартфоны
+[32mINFO    [0m pages.home:home.py:21 Clicking catalog link for product type: smartphone
+[32mINFO    [0m kt4:kt4.py:237 Прокрутка вниз на 300 пикселей
+[32mINFO    [0m pages.home:home.py:33 Scrolling down by 300 pixels
+[32mINFO    [0m kt4:kt4.py:241 Выбор продукта: HTC Touch HD
+[32mINFO    [0m pages.product:product.py:17 Выбор продукта: HTC Touch HD
+[32mINFO    [0m kt4:kt4.py:245 Добавление в корзину
+[32mINFO    [0m pages.product:product.py:33 Добавление продукта в корзину
+[32mINFO    [0m kt4:kt4.py:249 Проверка сообщения об успехе
+[32mINFO    [0m conftest:conftest.py:66 Quitting WebDriver

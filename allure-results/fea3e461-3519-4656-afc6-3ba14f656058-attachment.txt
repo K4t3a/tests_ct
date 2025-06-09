@@ -1,0 +1,13 @@
+[32mINFO    [0m conftest:conftest.py:45 Configured driver options for browser: chrome, headless: False
+[32mINFO    [0m conftest:conftest.py:62 Initialized WebDriver for browser: chrome
+[32mINFO    [0m conftest:conftest.py:71 Initializing page objects
+[32mINFO    [0m pages.home:home.py:25 Navigating to URL: https://demo-opencart.ru/index.php
+[32mINFO    [0m kt4:kt4.py:257 Тест 10: Написать отзыв для iPhone
+[32mINFO    [0m kt4:kt4.py:262 Прокрутка вниз на 300 пикселей
+[32mINFO    [0m pages.home:home.py:33 Scrolling down by 300 pixels
+[32mINFO    [0m kt4:kt4.py:266 Выбор продукта: iPhone
+[32mINFO    [0m pages.product:product.py:17 Выбор продукта: iPhone
+[32mINFO    [0m kt4:kt4.py:270 Переход на вкладку Отзывы
+[32mINFO    [0m pages.review:review.py:13 Клик по вкладке отзывов
+[32mINFO    [0m kt4:kt4.py:274 Проверка формы отзыва
+[32mINFO    [0m conftest:conftest.py:66 Quitting WebDriver

@@ -1,0 +1,17 @@
+[32mINFO    [0m conftest:conftest.py:45 Настройка опций драйвера для браузера: chrome, headless: False
+[32mINFO    [0m conftest:conftest.py:62 Инициализация WebDriver для браузера: chrome
+[32mINFO    [0m conftest:conftest.py:71 Инициализация объектов страниц
+[32mINFO    [0m pages.page:page.py:10 Initialized Page object
+[32mINFO    [0m pages.home:home.py:28 Navigating to URL: https://demo-opencart.ru/index.php
+[32mINFO    [0m pages.page:page.py:10 Initialized Page object
+[32mINFO    [0m pages.page:page.py:10 Initialized Page object
+[32mINFO    [0m pages.page:page.py:10 Initialized Page object
+[32mINFO    [0m pages.page:page.py:10 Initialized Page object
+[32mINFO    [0m pages.page:page.py:10 Initialized Page object
+[32mINFO    [0m kt4:kt4.py:224 Начало теста 8: Добавление Samsung Galaxy Tab 10.1 в корзину
+[32mINFO    [0m pages.home:home.py:23 Clicking catalog link for product type: tablet
+[32mINFO    [0m pages.page:page.py:16 Clicking element: xpath=//a[@href='https://demo-opencart.ru/index.php?route=product/category&path=57']
+[32mINFO    [0m pages.home:home.py:38 Scrolling down by 200 pixels
+[32mINFO    [0m pages.page:page.py:28 Scrolling to x=0, y=200
+[32mINFO    [0m pages.home:home.py:65 Adding product to cart: Samsung Galaxy Tab 10.1
+[32mINFO    [0m conftest:conftest.py:66 Закрытие WebDriver
